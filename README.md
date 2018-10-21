@@ -1,6 +1,8 @@
 Cowlib
 ======
 
+[![Build Status](https://travis-ci.org/voxoz/cowlib.svg?branch=master)](https://travis-ci.org/voxoz/cowlib)
+
 Cowlib is a support library for manipulating Web protocols.
 
 Goals

@@ -22,6 +22,7 @@
 -export([stream_chunked/2]).
 -export([chunk/1]).
 -export([last_chunk/0]).
+-export([dripfeed/4]).
 
 %% The state type is the same for both identity and chunked.
 -type state() :: {non_neg_integer(), non_neg_integer()}.
@@ -34,7 +35,7 @@
 	| {done, Data::binary(), TotalLen::non_neg_integer(), Rest::binary()}.
 -export_type([decode_ret/0]).
 
--ifdef(EXTRA).
+%-ifdef(EXTRA).
 dripfeed(<< C, Rest/bits >>, Acc, State, F) ->
 	case F(<< Acc/binary, C >>, State) of
 		more ->
@@ -50,7 +51,7 @@ dripfeed(<< C, Rest/bits >>, Acc, State, F) ->
 		{done, _, _, <<>>} ->
 			ok
 	end.
--endif.
+%-endif.
 
 %% Identity.
 
